@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: warehouse
+  labels:
+    app: simple-shop
+    component: warehouse
+  name: warehouse
+spec:
+  ports:
+  - port: 7004
+  selector:
+    app: simple-shop
+    component: warehouse

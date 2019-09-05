@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: warehouse
+  name: serviceconfig
+  labels:
+    app: simple-shop
+    team: beta
+data:
+  svcconfig: |-
+    {
+      "logging": {
+        "logLevel": {
+          "default": "Information"
+        },
+        "logger": "fluentd"
+      },
+      
+      "bus": {
+        "receiveEndpoint": "warehouse",
+        "host": "queue.data",
+        "username": "guest",
+        "password": "guest"
+      },
+      
+      "database": {
+        "connectionString": "host=document.data;database=Warehouse;password=ABC123!!;username=application"
+      }
+    }
+

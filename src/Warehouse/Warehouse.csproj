@@ -3,13 +3,14 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+        <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Basket.Events" Version="1.0.16" />
+        <PackageReference Include="Basket.Events" Version="1.0.52" />
         <PackageReference Include="Catalog.Events" Version="0.0.1" />
-        <PackageReference Include="Core" Version="1.0.30" />
+        <PackageReference Include="Core" Version="1.0.52" />
         <PackageReference Include="Marten" Version="3.7.0" />
         <PackageReference Include="MassTransit" Version="5.5.5" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -18,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Warehouse.Events\Warehouse.Events.csproj" />
+        <ProjectReference Include="..\Warehouse.Events\Warehouse.Events.csproj" />
     </ItemGroup>
 
     <ItemGroup>

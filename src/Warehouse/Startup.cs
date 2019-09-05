@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Infrastructure.Swagger;
+﻿using Core.Infrastructure.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Warehouse.Infrastructure;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Core.Infrastructure.HealthChecks;
 
 namespace Warehouse
 {
@@ -56,6 +50,8 @@ namespace Warehouse
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.ConfigureApplicationHealthCheck();
 
             app.UseCors("CorsPolicy");
 
