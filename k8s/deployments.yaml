@@ -1,25 +1,25 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: basket
-  name: basket
+  namespace: warehouse
+  name: warehouse
 spec:
   template:
     metadata:
       labels:
         app: simple-shop
-        component: basket
-        team: alpha
+        component: warehouse
+        team: beta
     spec:
       containers:
-        - name: basket
-          image: dbonessimplestore/basket:latest
+        - name: warehouse
+          image: dbonessimplestore/warehouse:latest
           imagePullPolicy: Always
           readinessProbe:
             failureThreshold: 3
             httpGet:
               path: /hc
-              port: 7001
+              port: 7004
               scheme: HTTP
             initialDelaySeconds: 10
             periodSeconds: 2
