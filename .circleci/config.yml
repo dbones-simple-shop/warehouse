@@ -62,7 +62,7 @@ jobs:
           APP_VERSION=$(cat src/version)
           echo $APP_VERSION
           
-          ls ./src/Basket/bin/Release/netcoreapp2.2
+          ls ./src/Warehouse/bin/Release/netcoreapp2.2
 
           docker login -u $dockeruser -p $dockerpassword
           docker build -t dbonessimplestore/warehouse:latest -t dbonessimplestore/warehouse:$APP_VERSION .
