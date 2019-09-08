@@ -34,6 +34,7 @@ jobs:
             - src/Warehouse/bin
             - src/nupkgs
             - src/version
+            - k8s
             - Dockerfile
 
   publish_nuget:
@@ -68,6 +69,24 @@ jobs:
           docker build -t dbonessimplestore/warehouse:latest -t dbonessimplestore/warehouse:$APP_VERSION .
           docker push dbonessimplestore/warehouse
 
+  deploy:
+    docker:
+      - image: byrnedo/alpine-curl
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: |
+          cd k8s
+          pwd
+          ls
+
+          curl -o rancher https://github.com/dbones-simple-shop/cli/blob/master/rancher?raw=true
+          rancher -v
+
+          rancher login $rancherurl --skip-verify --token $ranchertoken --context $ranchercontext
+
+          rancher kubectl apply -f .
+
 workflows:
   version: 2
   build_and_publish:
@@ -81,3 +100,7 @@ workflows:
           context: build-ctx
           requires:
             - build
+      # - deploy:
+      #     context: build-ctx
+      #     requires:
+      #       - publish_docker
