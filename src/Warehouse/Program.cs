@@ -41,6 +41,7 @@ namespace Warehouse
                 {
                     builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                 })
+                .ConfigureApplication()
                 .ConfigureLogging()
                 .ConfigureMartin()
                 .ConfigureSwagger()
