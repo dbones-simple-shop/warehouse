@@ -13,18 +13,20 @@ spec:
     spec:
       containers:
         - name: warehouse
-          image: dbonessimplestore/warehouse:latest
+          image: dbonessimplestore/warehouse:1.0.34
           imagePullPolicy: Always
-          livenessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /hc
-              port: 7001
-              scheme: HTTP
-            initialDelaySeconds: 10
-            periodSeconds: 30
-            successThreshold: 1
-            timeoutSeconds: 2
+          ports:
+            - containerPort: 7004
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /hc
+          #     port: 7001
+          #     scheme: HTTP
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 30
+          #   successThreshold: 1
+          #   timeoutSeconds: 2
           readinessProbe:
             failureThreshold: 3
             httpGet:

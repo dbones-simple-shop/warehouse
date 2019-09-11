@@ -8,7 +8,10 @@ metadata:
   name: warehouse
 spec:
   ports:
-  - port: 7004
+  - name: http
+    protocol: TCP
+    port: 7004
+    targetPort: 7004
   selector:
     app: simple-shop
     component: warehouse
